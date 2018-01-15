@@ -1,23 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tf2-ti-qnY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="pbM-oq-Kon">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="Tf2-ti-qnY" customClass="ViewController" customModule="CircularGauge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ztz-F3-6kR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bwe-Fn-YGL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dr5-dc-Wbm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iu8-mc-6na" customClass="CircularGaugeView" customModule="CircularGauge" customModuleProvider="target">
+                                <rect key="frame" x="67" y="28" width="240" height="240"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="aOp-yf-Gct"/>
+                                    <constraint firstAttribute="width" constant="240" id="akw-4w-B1F"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fullCircle" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerStartAngle">
+                                        <real key="value" value="270"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerEndAngle">
+                                        <real key="value" value="630"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showFloatingPoint" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldShowValueText" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="segmentRingColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVI-tp-4Y5" customClass="CircularGaugeView" customModule="CircularGauge" customModuleProvider="target">
+                                <rect key="frame" x="67" y="28" width="240" height="240"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="3vD-z0-SiC"/>
+                                    <constraint firstAttribute="width" constant="240" id="fqP-be-iTD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fullCircle" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerStartAngle">
+                                        <real key="value" value="270"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerEndAngle">
+                                        <real key="value" value="630"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldShowValueText" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showFloatingPoint" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="segmentRingColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DXR-da-vdb">
+                                <rect key="frame" x="87.5" y="507" width="200" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUz-kS-EBn">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="TDh-nV-FiN"/>
+                                            <constraint firstAttribute="height" constant="60" id="ToG-Dt-OrK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="ANIMATE"/>
+                                        <connections>
+                                            <action selector="animateButtonTapped:" destination="Tf2-ti-qnY" eventType="touchUpInside" id="6Ee-Eb-V2H"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="G2a-gL-Rrx"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGP-Tu-s8T">
+                                <rect key="frame" x="67" y="28.5" width="240" height="240"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Iu8-mc-6na" firstAttribute="height" secondItem="EVI-tp-4Y5" secondAttribute="height" id="1ki-zb-gUv"/>
+                            <constraint firstItem="Iu8-mc-6na" firstAttribute="centerY" secondItem="EVI-tp-4Y5" secondAttribute="centerY" id="2Nh-ge-u8C"/>
+                            <constraint firstItem="EVI-tp-4Y5" firstAttribute="top" secondItem="Ztz-F3-6kR" secondAttribute="bottom" constant="8" id="33M-UQ-U2E"/>
+                            <constraint firstItem="Iu8-mc-6na" firstAttribute="width" secondItem="EVI-tp-4Y5" secondAttribute="width" id="3wu-fS-9jY"/>
+                            <constraint firstItem="Bwe-Fn-YGL" firstAttribute="top" secondItem="DXR-da-vdb" secondAttribute="bottom" constant="100" id="8Zt-4F-EBm"/>
+                            <constraint firstItem="EVI-tp-4Y5" firstAttribute="centerX" secondItem="dr5-dc-Wbm" secondAttribute="centerX" id="8ye-uc-fbo"/>
+                            <constraint firstItem="rGP-Tu-s8T" firstAttribute="width" secondItem="EVI-tp-4Y5" secondAttribute="width" id="Dq5-Xs-TwA"/>
+                            <constraint firstItem="rGP-Tu-s8T" firstAttribute="centerX" secondItem="EVI-tp-4Y5" secondAttribute="centerX" id="VFb-zy-IBT"/>
+                            <constraint firstItem="DXR-da-vdb" firstAttribute="centerX" secondItem="dr5-dc-Wbm" secondAttribute="centerX" id="caQ-4L-btd"/>
+                            <constraint firstItem="rGP-Tu-s8T" firstAttribute="height" secondItem="EVI-tp-4Y5" secondAttribute="height" id="m23-q2-6hc"/>
+                            <constraint firstItem="rGP-Tu-s8T" firstAttribute="centerY" secondItem="EVI-tp-4Y5" secondAttribute="centerY" id="o4k-XE-eyc"/>
+                            <constraint firstItem="Iu8-mc-6na" firstAttribute="centerX" secondItem="EVI-tp-4Y5" secondAttribute="centerX" id="tWt-1U-XWX"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gauge" destination="EVI-tp-4Y5" id="Hbf-wx-qz2"/>
+                        <outlet property="gauge2" destination="Iu8-mc-6na" id="vBp-8R-r9J"/>
+                        <outlet property="value" destination="rGP-Tu-s8T" id="hlO-ZA-3C4"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PYY-h8-fcv" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
