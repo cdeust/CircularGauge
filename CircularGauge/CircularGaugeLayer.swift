@@ -4,21 +4,6 @@
 //
 //  Copyright (c) 2017 Clement DEUST
 //
-//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
-//  associated documentation files (the "Software"), to deal in the Software without restriction,
-//  including without limitation the rights to use, copy, modify, merge, publish, distribute,
-//  sublicense, and/or sell copies of the Software, and to permit persons to whom the Software
-//  is furnished to do so, subject to the following conditions:
-//
-//  The above copyright notice and this permission notice shall be included in all copies or
-//  substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-//  INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-//  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-//  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-//  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
 
 import UIKit
 
@@ -54,20 +39,16 @@ class CircularGaugeLayer: CAShapeLayer {
     @NSManaged var gradientStartPosition: CircularGaugeGradientPosition
     @NSManaged var gradientEndPosition: CircularGaugeGradientPosition
     
-    @NSManaged var outerStartAngle: CGFloat
-    @NSManaged var outerEndAngle: CGFloat
-    @NSManaged var outerRingWidth: CGFloat
-    @NSManaged var outerRingColor: UIColor
-    @NSManaged var outerCapStyle: CGLineCap
+    @NSManaged var gaugeStartAngle: CGFloat
+    @NSManaged var gaugeEndAngle: CGFloat
+    @NSManaged var backGaugeWidth: CGFloat
+    @NSManaged var backGaugeColor: UIColor
+    @NSManaged var backGaugeCapStyle: CGLineCap
     
-    @NSManaged var innerRingWidth: CGFloat
-    @NSManaged var innerRingColor: UIColor
-    @NSManaged var innerCapStyle: CGLineCap
-    @NSManaged var innerRingSpacing: CGFloat
-    
-    @NSManaged var segmentRingWidth: CGFloat
-    @NSManaged var segmentRingColor: UIColor
-    @NSManaged var segmentCapStyle: CGLineCap
+    @NSManaged var topGaugeWidth: CGFloat
+    @NSManaged var topGaugeColor: UIColor
+    @NSManaged var topGaugeCapStyle: CGLineCap
+    @NSManaged var topGaugeSpacing: CGFloat
     
     @NSManaged var shouldShowValueText: Bool
     @NSManaged var fontColor: UIColor
@@ -124,22 +105,22 @@ class CircularGaugeLayer: CAShapeLayer {
     // MARK: Helpers
     
     private func drawOuterRing(context: CGContext) {
-        guard outerRingWidth > 0 else { return }
+        guard backGaugeWidth > 0 else { return }
         
         let width = bounds.width
         let height = bounds.width
         let center = CGPoint(x: bounds.midX, y: bounds.midY)
-        let outerRadius = max(width, height)/2 - outerRingWidth/2
+        let outerRadius = max(width, height)/2 - backGaugeWidth/2
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0)
         
         let outerPath = UIBezierPath(arcCenter: center,
                                      radius: outerRadius,
-                                     startAngle: outerStartAngle.toRads,
-                                     endAngle: outerEndAngle.toRads,
+                                     startAngle: gaugeStartAngle.toRads,
+                                     endAngle: gaugeEndAngle.toRads,
                                      clockwise: clockwise)
         
-        outerPath.lineWidth = outerRingWidth
-        outerPath.lineCapStyle = outerCapStyle
+        outerPath.lineWidth = backGaugeWidth
+        outerPath.lineCapStyle = backGaugeCapStyle
         
         // If the style is 3 or 4, make sure to draw either dashes or dotted path
         switch ringStyle {
@@ -153,9 +134,9 @@ class CircularGaugeLayer: CAShapeLayer {
         }
         
         context.addPath(outerPath.cgPath)
-        context.setLineCap(outerCapStyle)
-        context.setLineWidth(outerRingWidth)
-        context.setStrokeColor(outerRingColor.cgColor)
+        context.setLineCap(backGaugeCapStyle)
+        context.setLineWidth(backGaugeWidth)
+        context.setStrokeColor(backGaugeColor.cgColor)
         context.setBlendMode(CGBlendMode.normal)
         context.setShouldAntialias(true)
         context.setAllowsAntialiasing(true)
@@ -166,7 +147,7 @@ class CircularGaugeLayer: CAShapeLayer {
     }
     
     private func drawInnerRing(context: CGContext) {
-        guard innerRingWidth > 0 else { return }
+        guard topGaugeWidth > 0 else { return }
         
         let width = bounds.width
         let height = bounds.width
@@ -174,20 +155,20 @@ class CircularGaugeLayer: CAShapeLayer {
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0)
         
         //Change angle to create segment
-        let angleDiff: CGFloat = outerEndAngle.toRads - outerStartAngle.toRads
+        let angleDiff: CGFloat = gaugeEndAngle.toRads - gaugeStartAngle.toRads
         let arcLenPerValue = angleDiff / CGFloat(maxValue)
-        let innerEndAngle = arcLenPerValue * CGFloat(value) + outerStartAngle.toRads
+        let innerEndAngle = arcLenPerValue * CGFloat(value) + gaugeStartAngle.toRads
         
-        let radiusIn = max(width, height)/2 - outerRingWidth/2
+        let radiusIn = max(width, height)/2 - backGaugeWidth/2
         let innerPath = UIBezierPath(arcCenter: center,
                                      radius: radiusIn,
-                                     startAngle: outerStartAngle.toRads,
+                                     startAngle: gaugeStartAngle.toRads,
                                      endAngle: innerEndAngle,
                                      clockwise: clockwise)
         context.addPath(innerPath.cgPath)
-        context.setLineCap(innerCapStyle)
-        context.setLineWidth(innerRingWidth)
-        context.setStrokeColor(innerRingColor.cgColor)
+        context.setLineCap(topGaugeCapStyle)
+        context.setLineWidth(topGaugeWidth)
+        context.setStrokeColor(topGaugeColor.cgColor)
         context.setBlendMode(CGBlendMode.normal)
         context.setShouldAntialias(true)
         context.setAllowsAntialiasing(true)

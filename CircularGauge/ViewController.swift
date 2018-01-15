@@ -59,10 +59,10 @@ class ViewController: UIViewController, CircularGaugeDelegate {
         // Do any additional setup after loading the view, typically from a nib.
 
         // Change any of the properties you'd like
-        gauge.outerRingWidth = 10
-        gauge2.outerRingWidth = 10
-        gauge.innerRingWidth = 10
-        gauge2.innerRingWidth = 10
+        gauge.backGaugeWidth = 10
+        gauge2.backGaugeWidth = 10
+        gauge.topGaugeWidth = 10
+        gauge2.topGaugeWidth = 10
         gauge.animationStyle = kCAMediaTimingFunctionLinear
         gauge2.animationStyle = kCAMediaTimingFunctionLinear
         gauge2.delegate = self
@@ -89,8 +89,8 @@ class ViewController: UIViewController, CircularGaugeDelegate {
         self.gauge.value = 0
         self.gauge2.value = 0
         
-        self.gauge2.outerRingColor = UIColor.clear
-        self.gauge.outerRingColor = UIColor.clear
+        self.gauge2.backGaugeColor = UIColor.clear
+        self.gauge.backGaugeColor = UIColor.clear
         let random: Double = Double(randomNumber(inRange: 0...50))
         let random2: Double = Double(random) + Double(randomNumber(inRange: 0...50))
         self.gauge2.setProgress(value: CGFloat(random2), animationDuration: 0.5)

@@ -4,21 +4,6 @@
 //
 //  Copyright (c) 2017 Clement DEUST
 //
-//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
-//  associated documentation files (the "Software"), to deal in the Software without restriction,
-//  including without limitation the rights to use, copy, modify, merge, publish, distribute,
-//  sublicense, and/or sell copies of the Software, and to permit persons to whom the Software
-//  is furnished to do so, subject to the following conditions:
-//
-//  The above copyright notice and this permission notice shall be included in all copies or
-//  substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-//  INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-//  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-//  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-//  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
 
 import UIKit
 
@@ -84,15 +69,15 @@ public enum CircularGaugeAddonType {
         }
     }
     
-    @IBInspectable open var outerStartAngle: CGFloat = 270 {
+    @IBInspectable open var gaugeStartAngle: CGFloat = 270 {
         didSet {
-            self.gaugeLayer.outerStartAngle = self.outerStartAngle
+            self.gaugeLayer.gaugeStartAngle = self.gaugeStartAngle
         }
     }
     
-    @IBInspectable open var outerEndAngle: CGFloat = 630 {
+    @IBInspectable open var gaugeEndAngle: CGFloat = 630 {
         didSet {
-            self.gaugeLayer.outerEndAngle = self.outerEndAngle
+            self.gaugeLayer.gaugeEndAngle = self.gaugeEndAngle
         }
     }
     
@@ -122,112 +107,79 @@ public enum CircularGaugeAddonType {
     
     // MARK: Outer Ring properties
     
-    @IBInspectable open var outerRingWidth: CGFloat = 10.0 {
+    @IBInspectable open var backGaugeWidth: CGFloat = 10.0 {
         didSet {
-            self.gaugeLayer.outerRingWidth = self.outerRingWidth
+            self.gaugeLayer.backGaugeWidth = self.backGaugeWidth
         }
     }
     
-    @IBInspectable open var outerRingColor: UIColor = UIColor.gray {
+    @IBInspectable open var backGaugeColor: UIColor = UIColor.gray {
         didSet {
-            self.gaugeLayer.outerRingColor = self.outerRingColor
+            self.gaugeLayer.backGaugeColor = self.backGaugeColor
         }
     }
     
-    @IBInspectable open var outerRingCapStyle: Int = 1 {
+    @IBInspectable open var backGaugeCapStyle: Int = 1 {
         didSet {
-            switch self.outerRingCapStyle{
+            switch self.backGaugeCapStyle{
             case 1:
-                self.outStyle = .butt
-                self.gaugeLayer.outerCapStyle = .butt
+                self.backStyle = .butt
+                self.gaugeLayer.backGaugeCapStyle = .butt
             case 2:
-                self.outStyle = .round
-                self.gaugeLayer.outerCapStyle = .round
+                self.backStyle = .round
+                self.gaugeLayer.backGaugeCapStyle = .round
             case 3:
-                self.outStyle = .square
-                self.gaugeLayer.outerCapStyle = .square
+                self.backStyle = .square
+                self.gaugeLayer.backGaugeCapStyle = .square
             default:
-                self.outStyle = .butt
-                self.gaugeLayer.outerCapStyle = .butt
+                self.backStyle = .butt
+                self.gaugeLayer.backGaugeCapStyle = .butt
             }
         }
     }
     
-    internal var outStyle: CGLineCap = .butt
+    internal var backStyle: CGLineCap = .butt
     
     // MARK: Inner Ring properties
     
-    @IBInspectable open var innerRingWidth: CGFloat = 5.0 {
+    @IBInspectable open var topGaugeWidth: CGFloat = 5.0 {
         didSet {
-            self.gaugeLayer.innerRingWidth = self.innerRingWidth
+            self.gaugeLayer.topGaugeWidth = self.topGaugeWidth
         }
     }
     
-    @IBInspectable open var segmentRingColor: UIColor = UIColor.blue {
+    @IBInspectable open var topGaugeColor: UIColor = UIColor.blue {
         didSet {
-            self.gaugeLayer.segmentRingColor = self.segmentRingColor
+            self.gaugeLayer.topGaugeColor = self.topGaugeColor
         }
     }
     
-    @IBInspectable open var segmentRingWidth: CGFloat = 5.0 {
+    @IBInspectable open var topGaugeSpacing: CGFloat = 1 {
         didSet {
-            self.gaugeLayer.segmentRingWidth = self.segmentRingWidth
+            self.gaugeLayer.topGaugeSpacing = self.topGaugeSpacing
         }
     }
     
-    @IBInspectable open var segmentRingCapStyle: Int = 2 {
+    @IBInspectable open var topGaugeCapStyle: Int = 2 {
         didSet {
-            switch self.segmentRingCapStyle {
+            switch self.topGaugeCapStyle {
             case 1:
-                self.segStyle = .butt
-                self.gaugeLayer.segmentCapStyle = .butt
+                self.topStyle = .butt
+                self.gaugeLayer.topGaugeCapStyle = .butt
             case 2:
-                self.segStyle = .round
-                self.gaugeLayer.segmentCapStyle = .round
+                self.topStyle = .round
+                self.gaugeLayer.topGaugeCapStyle = .round
             case 3:
-                self.segStyle = .square
-                self.gaugeLayer.segmentCapStyle = .square
+                self.topStyle = .square
+                self.gaugeLayer.topGaugeCapStyle = .square
             default:
-                self.segStyle = .butt
-                self.gaugeLayer.segmentCapStyle = .butt
+                self.topStyle = .butt
+                self.gaugeLayer.topGaugeCapStyle = .butt
             }
         }
     }
     
-    internal var segStyle: CGLineCap = .round
-    
-    @IBInspectable open var innerRingColor: UIColor = UIColor.blue {
-        didSet {
-            self.gaugeLayer.innerRingColor = self.innerRingColor
-        }
-    }
-    
-    @IBInspectable open var innerRingSpacing: CGFloat = 1 {
-        didSet {
-            self.gaugeLayer.innerRingSpacing = self.innerRingSpacing
-        }
-    }
-    
-    @IBInspectable open var innerRingCapStyle: Int = 2 {
-        didSet {
-            switch self.innerRingCapStyle {
-            case 1:
-                self.inStyle = .butt
-                self.gaugeLayer.innerCapStyle = .butt
-            case 2:
-                self.inStyle = .round
-                self.gaugeLayer.innerCapStyle = .round
-            case 3:
-                self.inStyle = .square
-                self.gaugeLayer.innerCapStyle = .square
-            default:
-                self.inStyle = .butt
-                self.gaugeLayer.innerCapStyle = .butt
-            }
-        }
-    }
-    
-    internal var inStyle: CGLineCap = .round
+    internal var topStyle: CGLineCap = .round
     
     // MARK: Label
     
@@ -354,18 +306,15 @@ public enum CircularGaugeAddonType {
         self.gaugeLayer.gradientColorLocations = gradientColorLocations
         self.gaugeLayer.gradientStartPosition = gradientStartPosition
         self.gaugeLayer.gradientEndPosition = gradientEndPosition
-        self.gaugeLayer.outerStartAngle = outerStartAngle
-        self.gaugeLayer.outerEndAngle = outerEndAngle
-        self.gaugeLayer.outerRingWidth = outerRingWidth
-        self.gaugeLayer.outerRingColor = outerRingColor
-        self.gaugeLayer.outerCapStyle = outStyle
-        self.gaugeLayer.innerRingWidth = innerRingWidth
-        self.gaugeLayer.innerRingColor = innerRingColor
-        self.gaugeLayer.innerCapStyle = inStyle
-        self.gaugeLayer.segmentRingWidth = segmentRingWidth
-        self.gaugeLayer.segmentRingColor = segmentRingColor
-        self.gaugeLayer.segmentCapStyle = segStyle
-        self.gaugeLayer.innerRingSpacing = innerRingSpacing
+        self.gaugeLayer.gaugeStartAngle = gaugeStartAngle
+        self.gaugeLayer.gaugeEndAngle = gaugeEndAngle
+        self.gaugeLayer.backGaugeWidth = backGaugeWidth
+        self.gaugeLayer.backGaugeColor = backGaugeColor
+        self.gaugeLayer.backGaugeCapStyle = backStyle
+        self.gaugeLayer.topGaugeWidth = topGaugeWidth
+        self.gaugeLayer.topGaugeColor = topGaugeColor
+        self.gaugeLayer.topGaugeCapStyle = topStyle
+        self.gaugeLayer.topGaugeSpacing = topGaugeSpacing
         self.gaugeLayer.shouldShowValueText = shouldShowValueText
         self.gaugeLayer.valueIndicator = valueIndicator
         self.gaugeLayer.fontColor = fontColor
